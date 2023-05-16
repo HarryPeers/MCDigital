@@ -1,0 +1,103 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: -2;
+    position: absolute;
+    top: 0px;
+    
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
+    opacity: 95%;
+}
+
+.container img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.ball {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    position: absolute;
+
+    text-align: center;
+    line-height: 190px;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.b-red {
+    background-color: #DC2041;
+}
+
+.b-blue {
+    background-color: #1C3A83;
+}
+
+:root {
+    --ball-offset-x: 110px;
+    --ball-offset-y: 90px;
+}
+
+.top-right {
+    top: var(--ball-offset-y);
+    right: var(--ball-offset-x);
+}
+
+.top-left {
+    top: var(--ball-offset-y);
+    left: var(--ball-offset-x);
+}
+
+.bottom-left {
+    bottom: var(--ball-offset-y);
+    left: var(--ball-offset-x);
+}
+
+.bottom-right {
+    bottom: var(--ball-offset-y);
+    right: var(--ball-offset-x);
+}
+
+.jumpscare {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left:0;
+}
+
+.jumpscare-image {
+    width: 0px;
+
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 200;
+
+}

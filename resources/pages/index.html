@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>MCDigital</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/resources/styles/landing.css">
+       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="jumpscare" id="jumpscare-trigger"></div>
+            <img class="jumpscare-image" id="jumpscare-image" src="resources/images/jumpscarev2.png" hidden>
+            <div class="balls">
+                <div class="ball b-red top-left">Courses</div>
+                <div class="ball b-blue top-right" onclick="window.location.replace('/support')">Support</div>
+                <div class="ball b-blue bottom-left">Software</div>
+                <div class="ball b-red bottom-right">Team</div>
+            </div>
+            <img src="resources/images/logo.png">
+            <video src="resources/videos/backgroundv2.mp4" id="video-background" autoplay muted loop></video>
+        </div>
+
+    </body>
+
+    <script>
+        document.querySelector('video').playbackRate  = 0.8;
+
+        document.getElementById("jumpscare-trigger").onclick = async () => {
+            await jumpscare();
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function jumpscare() {
+
+            var el = document.getElementById("jumpscare-image");
+            el.hidden = false;
+
+            var i = 0;
+            var f = 0;
+
+            while (i < 3000) { 
+                i += 60;
+                f += 3.4;
+                el.style.width = `${i}px`
+                el.style.marginTop = `-200px`
+                el.style.left = `-${f}px`
+                await sleep(0.3)
+            }
+
+            await sleep(1000)
+            el.hidden = true;
+
+        }
+
+    </script>
+
+</html>
