@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>Submit a course</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+            Key:<br>
+            <input id="key"><br><br>
+
+            Course name:<br>
+            <input id="name"><br><br>
+
+            Description:<br>
+            <textarea id="description"></textarea>
+
+            <br><br>
+
+            Create a section<button onclick="createSection(name='');">Create</button><br><br>
+
+            <div class="sections" id="sections">
+
+            </div>
+            
+            <br><br>
+
+            Enter course<button onclick="inputCourse();">Enter</button><br><br>
+
+        </div>
+
+    </body>
+
+    <script>
+        const elements = document.getElementById("sections");
+
+        function deleteSection() {
+            event.target.parentNode.remove();
+        }
+
+        function createSection(name) {
+            let div = document.createElement("div");
+
+            let input = document.createElement("input");
+            input.value = name;
+            input.placeholder = "Section title";
+
+            let textArea = document.createElement("textarea");
+            textArea.placeholder = "Section description"
+
+            let button = document.createElement("button");
+            button.innerText = "Delete section"
+            button.onclick = ()=>{deleteSection()}
+
+            div.appendChild(input);
+            div.appendChild(textArea);
+            div.appendChild(button)
+            
+            elements.appendChild(div);
+
+        }
+
+        function inputCourse() {
+
+            var thing = true;
+
+            var payload = {
+                "sections": []
+            }
+
+            let items = ["name", "description"];
+
+            items.forEach((part)=>{
+                let value = document.getElementById(part).value;
+
+                if (value.length == 0) {
+                    thing = false;
+                }
+
+                payload[part] = value;
+
+            });
+
+            Array.from(document.getElementById("sections").childNodes).forEach((sectionElement)=>{
+                let s = {};
+
+                try{
+                    s.title = sectionElement.getElementsByTagName("input")[0].value;
+                    s.description = sectionElement.getElementsByTagName("textarea")[0].value;
+
+                    if (s.title.lenth == 0 || s.description.length == 0) { thing = false; }
+
+                    payload.sections.push(s)
+                } catch {
+                    console.log(sectionElement);
+                }
+
+
+            })
+
+            if (!thing) { alert("Please ensure all inputs have been filled.")}
+            else {
+
+                let key = document.getElementById("key").value;
+
+                let r = request("POST", `/api/courses/create?key=${key}`, payload)
+
+                if (r[0] != 200) {
+                    alert(r[0])
+                } else {
+
+                    items.forEach((part)=>{
+                        document.getElementById(part).value="";
+                    });   
+
+                    document.getElementById("sections").innerHTML = "";
+
+                    
+                    createSection("Entry Requirements");
+                    createSection("Modules studied");
+                    createSection("How will it be studied");
+
+                }
+            }
+
+
+        }
+
+        function request(method, path, json=null) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open(method, `${path}`, false);
+            xmlHttp.send(JSON.stringify(json));
+            return [xmlHttp.status, JSON.parse(xmlHttp.responseText)]
+        }
+
+        createSection("Entry Requirements");
+        createSection("Modules studied");
+        createSection("How will it be studied");
+
+    </script>
+
+
+    <style>
+
+        .container {
+            width: 60%;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        .sections div {
+            border-bottom: 3px solid blue;
+            padding-bottom: 10px;
+            margin-bottom: 50px;
+        }
+
+        .sections button { 
+            margin-top: 30px;
+        }
+
+        .sections input {
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        textarea {
+            width: 100%;
+            height: 300px;
+        }
+
+        button {
+            margin-left: 10px;
+        }
+
+
+
+    </style>
+
+</html>

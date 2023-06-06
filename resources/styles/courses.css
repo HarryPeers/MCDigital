@@ -1,0 +1,57 @@
+.container {
+    background: url("../images/courses-background.png");
+}
+
+.container-text h {
+    border-bottom: 2px solid #1C3A83;
+}
+
+.search-container {
+    width: 60%;
+    min-width: 400px;
+    margin: auto;
+    min-height: 900px;
+}
+
+
+
+.search-container-courses div {
+    border-bottom: 3px solid #1C3A83;
+    width: 80%;
+    height: 90px;
+
+    padding: 0 15px 0 15px;
+
+    margin: auto;
+    line-height: 90px;
+    box-sizing: border-box;
+
+    text-align: left;
+}
+
+.search-container-courses h {
+    color: black;
+    font-size: 36px;
+}
+
+
+.search {
+    font-size: 28px;
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+.search input {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 400px;
+    height: 35px;
+}
+
+.search button {
+    color: white;
+    background-color: #1C3A83;
+    border: none;
+    padding: 10px 40px 10px 40px;
+}

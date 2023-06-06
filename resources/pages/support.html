@@ -4,7 +4,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/resources/styles/support.css">
-       
+        <link rel="stylesheet" href="/resources/styles/navbar.css">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -12,13 +13,19 @@
 
     <body>
 
-        <div class="navbar">
+        <div class="navbar" id="navbar">
             <img src="resources/images/logo-alt.png" onclick="window.location.replace('/')" style="cursor:pointer;">
-            <div class="choices">
-                <a href="/">Home</a>
-                <a href="/software">Software</a>
-                <a href="/courses">Courses</a>
-                <a href="/team">Team</a>
+            <div class="choices" id="choices">
+                <li>
+                    <ul><a href="/">Home</a></ul>
+                    <ul><a href="/software">Software</a></ul>
+                    <ul><a href="/courses">Courses</a></ul>
+                    <ul><a href="/team">Team</a></ul>
+                    <ul><a href="/support">Support</a></ul>
+                </li>
+            </div>
+            <div class="hamburger-option" onclick="toggleHamburger()">
+                <img src="resources/images/hamburger-white.png" id="hamburger">
             </div>
         </div>
 
@@ -35,7 +42,7 @@
             <div class="section">
                 <p>
                     <h>Travelling to college</h><br>
-                    Lorem ipsum dolor sit eaque sit quisquam minima qui quis perferendis! Cum suscipit rerum aut amet beatae est autem fuga sed accusamus amnis aut dolor
+                    There are several ways to make travel to college easier no matter how far away you are. A train travel saver card is available for 16–17-year-olds for £30 per year allowing free travel with all stations in the region. Free bus travel is available using the student ID card for £5 per term. Several bus routes are available as MC1 through 5 including Easington, Guisborough, Saltburn and more. Student parking is available as a permit for £12 per term.
                     <br><button>Learn more</button>
                 </p>
             </div>
@@ -51,7 +58,7 @@
             <div class="section">
                 <p>
                     <h>Careers Advice</h><br>
-                    Lorem ipsum dolor sit eaque sit quisquam minima qui quis perferendis! Cum suscipit rerum aut amet beatae est autem fuga sed accusamus amnis aut dolor
+                    Our team of advisors and careers experts are always on hand to provide information, advice and guidance to students. They can help you find part time work while at college and make decisions on future career paths afterwards. Support on courses, further education and apprenticeships is available for everyone at no cost. Students are entitled to careers help such as interviews, CV advice and workshops to improve their chances of finding work.
                     <br><button>Learn more</button>
                 </p>
             </div>
@@ -59,6 +66,8 @@
         </div>
 
     </body>
+
+    <script src="resources/scripts/navbar.js"></script>
 
 
 </html>
